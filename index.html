@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENUÍNO | Urban Heritage | Funchal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #F8F6F2; 
+            --text: #1A1A1A; 
+            --copper: #9E6B4D; 
+            --stone: #3D3732;
+            --white: #FFFFFF;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Jost', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1001; padding: 20px 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.8rem; color: var(--text); text-decoration: none; 
+            text-transform: uppercase; letter-spacing: 6px; font-family: 'Cormorant Garamond', serif;
+        }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text); font-size: 0.75rem; 
+            text-transform: uppercase; letter-spacing: 2px; transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--copper); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+            text-align: center;
+        }
+        .hero h1 { 
+            font-size: clamp(4rem, 15vw, 10rem); line-height: 0.9; color: var(--white); 
+            letter-spacing: 15px; text-transform: uppercase; margin-bottom: 25px;
+        }
+        .hero p { 
+            font-size: 1rem; letter-spacing: 8px; text-transform: uppercase; 
+            color: #C8A96E; margin-bottom: 50px; font-weight: 300;
+        }
+        .btn-white {
+            display: inline-block; padding: 22px 70px; background: var(--white);
+            color: var(--text); text-decoration: none; font-size: 0.85rem; letter-spacing: 4px;
+            text-transform: uppercase; font-weight: 700; transition: var(--transition);
+        }
+        .btn-white:hover { background: var(--copper); color: var(--white); transform: translateY(-5px); }
+
+        /* Sections */
+        .section { padding: 140px 0; }
+        .section-title { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 80px; text-align: center; color: var(--stone); line-height: 1; }
+
+        /* SOBRE - REFORMATADO */
+        .about-section { background-color: var(--white); }
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1.1fr 0.9fr; 
+            gap: 100px; 
+            align-items: center; 
+        }
+        .about-text span { 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            color: var(--copper); 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            display: block; 
+            margin-bottom: 20px; 
+        }
+        .about-text h2 { font-size: 3.8rem; margin-bottom: 40px; color: var(--stone); line-height: 1.1; }
+        .about-text p { font-size: 1.2rem; color: #555; font-weight: 300; margin-bottom: 25px; }
+        .about-image { position: relative; }
+        .about-image img { width: 100%; border-radius: 2px; box-shadow: 30px 30px 0 var(--bg); }
+
+        /* Menu */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .menu-card { 
+            padding: 50px; border: 1px solid rgba(0,0,0,0.05); 
+            background: var(--white); transition: var(--transition);
+        }
+        .menu-card:hover { transform: translateY(-10px); border-color: var(--copper); }
+        .menu-card h3 { font-size: 2rem; margin-bottom: 15px; color: var(--copper); }
+
+        /* LOCALIZAÇÃO */
+        .location-section { background-color: var(--bg); text-align: center; padding: 140px 0; }
+        .map-container { 
+            width: 100%; height: 450px; background: #ddd; 
+            margin-top: 60px; border: 1px solid rgba(0,0,0,0.05);
+            position: relative; overflow: hidden;
+        }
+        .address-box { margin-top: 40px; }
+        .address-box h3 { font-size: 2rem; margin-bottom: 10px; color: var(--stone); }
+        .address-box p { font-size: 1.1rem; color: #666; letter-spacing: 1px; }
+
+        /* Reservations */
+        .reservations { background: var(--stone); color: var(--white); text-align: center; padding: 140px 0; }
+        .phone-link { 
+            font-size: clamp(2.5rem, 8vw, 5rem); color: var(--white); text-decoration: none;
+            font-family: 'Cormorant Garamond', serif; transition: var(--transition);
+            display: block; margin: 30px 0;
+        }
+
+        /* Footer */
+        footer { padding: 80px 0; text-align: center; border-top: 1px solid #eee; }
+        .footer-logo { font-size: 2.5rem; color: var(--text); margin-bottom: 20px; display: block; }
+
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 60px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Genuíno</a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Espaço</a></li>
+                <li><a href="#menu">Ementa</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="reveal" style="letter-spacing: 8px; color: #fff; margin-bottom: 20px; font-weight: 300;">Authentic Madeiran Soul</p>
+            <h1 class="reveal">Genuíno</h1>
+            <div class="reveal">
+                <a href="#reservas" class="btn-white">Reservar Mesa</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="sobre" class="section about-section">
+        <div class="container about-grid">
+            <div class="about-text reveal">
+                <span>Rua dos Aranhas, Funchal</span>
+                <h2>Pequeno de espaço.<br>Grande de alma.</h2>
+                <p>O Genuíno nasceu no coração do Funchal como um tributo à pedra e à tradição madeirense. É um refúgio urbano onde o basalto negro emoldura uma gastronomia íntima.</p>
+                <p>Aqui, cada prato é preparado com paciência e respeito pelos ingredientes da terra, servido num ambiente que convida a conversas longas e descobertas genuínas.</p>
+            </div>
+            <div class="about-image reveal">
+                <img src="https://images.unsplash.com/photo-1590059345136-976450f3c559?auto=format&fit=crop&q=80&w=800" alt="Interior Genuíno">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section container">
+        <h2 class="section-title reveal">Ementa Genuína</h2>
+        <div class="menu-grid">
+            <div class="menu-card reveal">
+                <h3>Bacalhau Nobre</h3>
+                <p>Lombo de bacalhau de cura superior, servido com puré de grão cremoso e azeite regional.</p>
+            </div>
+            <div class="menu-card reveal">
+                <h3>Espetada Tradicional</h3>
+                <p>Carne selecionada em pau de louro, acompanhada pelo crocante milho frito da casa.</p>
+            </div>
+            <div class="menu-card reveal">
+                <h3>Polvo à Lagareiro</h3>
+                <p>Tentáculos tenros assados no forno com batata a murro e alho confitado.</p>
+            </div>
+            <div class="menu-card reveal">
+                <h3>Filet Mignon</h3>
+                <p>Com redução intensa de vinho da Madeira, espargos verdes e cogumelos silvestres.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao" class="location-section">
+        <div class="container">
+            <h2 class="section-title reveal">Onde nos encontrar</h2>
+            <p class="reveal">Estamos situados numa das ruas mais carismáticas do Funchal.</p>
+            <div class="map-container reveal">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.5645511099!2d-16.91307!3d32.64835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc606010777c5793%3A0x6790938f378037!2sR.%20dos%20Aranhas%2031%2C%209000-044%20Funchal!5e0!3m2!1spt-PT!2spt!4v1714123456789!5m2!1spt-PT!2spt" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="address-box reveal">
+                <h3>Rua dos Aranhas 31</h3>
+                <p>9000-044 Funchal, Madeira, Portugal</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservas" class="reservations">
+        <div class="container">
+            <h2 class="reveal">Garante a sua Mesa</h2>
+            <a href="tel:+351291111207" class="phone-link reveal">+351 291 111 207</a>
+            <p class="reveal" style="font-size: 0.9rem; letter-spacing: 3px; opacity: 0.8;">Apenas Jantares • Terça a Sábado</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo serif">Genuíno</a>
+            <p style="font-size: 0.8rem; letter-spacing: 2px; color: #888;">&copy; 2024 Restaurante Genuíno. Criado para amantes da autenticidade.</p>
+        </div>
+    </footer>
+
+    <script>
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
